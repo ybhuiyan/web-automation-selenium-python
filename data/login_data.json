@@ -1,0 +1,16 @@
+{
+  "valid_credentials": {
+    "admin": {
+      "username": "student",
+      "password": "Password123"
+    },
+    "employee": {
+      "username": "retew37548@sfpixel.com",
+      "password": "87654#@1"
+    }
+  },
+  "invalid_credentials": {
+    "username": "invalid_user@example.com",
+    "password": "invalid_password"
+  }
+}

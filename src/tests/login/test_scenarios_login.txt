@@ -1,0 +1,13 @@
+Scenario 1: Successful Login
+- Step 1: Navigate to the login page.
+- Step 2: Enter a valid username.
+- Step 3: Enter a valid password.
+- Step 4: Click the login button.
+- Expected Result: User should be redirected to the home page, and the user should be logged in successfully.
+
+Scenario 2: Unsuccessful Login with Invalid Credentials
+- Step 1: Navigate to the login page.
+- Step 2: Enter an invalid username.
+- Step 3: Enter an invalid password.
+- Step 4: Click the login button.
+- Expected Result: An error message "Invalid username or password." should be displayed.

@@ -1,4 +1,5 @@
 name: selenium_python_CI
+
 on: [push]
 jobs:
   build:
@@ -13,28 +14,25 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: Install Allure CLI
-        run: |
-          sudo apt-get install -y curl
-          curl -o allure-commandline.tgz -L https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.16.1/allure-commandline-2.16.1.tgz
-          sudo tar -zxvf allure-commandline.tgz -C /opt/
-          export PATH=$PATH:/opt/allure-2.16.1/bin
+
+      - uses: actions/checkout@v4
+        if: success() || failure()
+
       - name: Run tests
         run: |
           python main.py
-      - name: Generate Allure report
-        run: |
-          /opt/allure-2.16.1/bin/allure generate ./reports/allure-results -o ./reports/allure-report --clean
-          /opt/allure-2.16.1/bin/allure serve ./reports/allure-results
+
+      - name: Upload Allure report as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: ./reports/allure-report
+
       - name: Deploy Allure report to GitHub Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v4
         with:
           personal_token: ${{ secrets.GH_PAGES_TOKEN }}
-          publish_dir: reports/allure-report
+          publish_dir: ./reports/allure-report
           publish_branch: gh-pages
           keep_files: false
-          force_orphan: true
-          user_name: "github-actions[bot]"
-          user_email: "github-actions[bot]@users.noreply.github.com"
-          commit_message: ${{ github.event.head_commit.message }}

@@ -1,4 +1,4 @@
-# Selenium Web Automation Project with Reporting
+# Selenium - Python Web Automation Project with Reporting
 
 ## Prerequisites
 

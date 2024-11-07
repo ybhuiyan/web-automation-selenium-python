@@ -40,12 +40,10 @@ jobs:
           mkdir -p ./reports/allure-results
           mkdir -p ./reports/allure-report
 
-      - name: Run Tests
+      - name: Run Tests and Generate Allure Report
         run: |
           python main.py
-        continue-on-error: true # Ensure that even if tests fail, the summary is still generated
-
-      - uses: dariocurr/pytest-summary@main
+        continue-on-error: true # Ensures that the job doesn't fail if some tests fail
 
       - name: Verify Allure Results
         run: |
@@ -57,10 +55,6 @@ jobs:
         with:
           name: allure-report
           path: ./reports/allure-report
-
-      - name: Append Test Summary to Job Summary
-        run: |
-          echo "Adding some Markdown content" >> $GITHUB_STEP_SUMMARY
 
   deploy:
     runs-on: ubuntu-latest

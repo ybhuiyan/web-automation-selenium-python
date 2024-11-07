@@ -18,14 +18,14 @@ jobs:
           sudo apt-get install -y curl
           curl -o allure-commandline.tgz -L https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.16.1/allure-commandline-2.16.1.tgz
           sudo tar -zxvf allure-commandline.tgz -C /opt/
-          sudo ln -s /opt/allure-2.16.1/bin/allure /usr/local/bin/allure
+          export PATH=$PATH:/opt/allure-2.16.1/bin
       - name: Run tests
         run: |
           python main.py
       - name: Generate Allure report
         run: |
-          allure generate ./reports/allure-results -o ./reports/allure-report --clean
-          allure serve ./reports/allure-results
+          /opt/allure-2.16.1/bin/allure generate ./reports/allure-results -o ./reports/allure-report --clean
+          /opt/allure-2.16.1/bin/allure serve ./reports/allure-results
       - name: Deploy Allure report to GitHub Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v4

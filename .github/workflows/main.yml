@@ -26,8 +26,11 @@ jobs:
 
       - name: Install Allure CLI
         run: |
-          sudo apt-get update
-          sudo apt-get install -y allure
+          ALLURE_VERSION=2.23.0  # Check Allure's latest release and update if needed
+          wget https://github.com/allure-framework/allure2/releases/download/${ALLURE_VERSION}/allure-${ALLURE_VERSION}.tgz
+          tar -zxvf allure-${ALLURE_VERSION}.tgz
+          sudo mv allure-${ALLURE_VERSION} /opt/allure
+          sudo ln -s /opt/allure/bin/allure /usr/bin/allure
 
       - name: Run Tests with Allure
         run: |
@@ -60,6 +63,7 @@ jobs:
           path: ./reports/allure-report
 
       - name: Deploy to GitHub Pages
+        if: always()
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

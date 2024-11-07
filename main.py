@@ -13,7 +13,7 @@ def main(test_files):
     pytest.main(args + test_files)
 
     generate_allure_report()
-    serve_allure_report()
+    #serve_allure_report()
 
 def generate_allure_report():
     # Simple report generation

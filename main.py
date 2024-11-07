@@ -11,8 +11,13 @@ def main(test_files):
     generate_allure_report()
 
 def generate_allure_report():
-    # Simple report generation
-    os.system("allure generate --single-file ./reports/allure-results -o ./reports/allure-report --clean")
+    print("Generating Allure report...")
+    result = os.system("allure generate ./reports/allure-results -o ./reports/allure-report --clean")
+    if result != 0:
+        print("Failed to generate Allure report.")
+    else:
+        print("Allure report generated successfully.")
+
     
 
 if __name__ == "__main__":

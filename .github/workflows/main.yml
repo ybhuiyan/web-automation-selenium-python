@@ -19,7 +19,7 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest ./src/tests --alluredir=reports/allure-results
+          python main.py
 
       - name: Upload Allure report as artifact
         uses: actions/upload-artifact@v4

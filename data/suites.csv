@@ -1,3 +1,3 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Thu Nov 07 11:53:47 UTC 2024","Thu Nov 07 11:53:48 UTC 2024","1287","src.tests.login","test_login","","","","test_valid_login[credentials0]",""
-"passed","Thu Nov 07 11:53:48 UTC 2024","Thu Nov 07 11:53:49 UTC 2024","727","src.tests.login","test_login","","","","test_invalid_login[credentials0]",""
+"passed","Thu Nov 07 12:04:37 UTC 2024","Thu Nov 07 12:04:38 UTC 2024","733","src.tests.login","test_login","","","","test_invalid_login[credentials0]",""
+"passed","Thu Nov 07 12:04:35 UTC 2024","Thu Nov 07 12:04:37 UTC 2024","2703","src.tests.login","test_login","","","","test_valid_login[credentials0]",""

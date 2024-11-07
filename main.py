@@ -1,4 +1,5 @@
 import os
+import subprocess
 import pytest
 from src.utils.helper_function import update_default_browser, update_headless_mode
 
@@ -18,7 +19,13 @@ def generate_allure_report():
     else:
         print("Allure report generated successfully.")
 
+def generate_allure_report():
+    # Simple report generation
+    os.system("allure generate --single-file ./reports/allure-results -o ./reports/allure-report --clean")
     
+    
+def serve_allure_report():
+    subprocess.run(["allure", "serve", "./reports/allure-results"], shell=True)
 
 if __name__ == "__main__":
     # Choose browser from "chrome" or "firefox"

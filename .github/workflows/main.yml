@@ -5,10 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -23,7 +25,11 @@ jobs:
 
       - name: Run tests
         run: |
-          python main.py
+          python main.py  # Generates the report in reports/allure-report
+
+      - name: Remove unnecessary files
+        run: |
+          find reports/allure-report -type f ! -name 'index.html' -delete
 
       - name: Upload Allure report as artifact
         uses: actions/upload-artifact@v4

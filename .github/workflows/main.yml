@@ -24,6 +24,11 @@ jobs:
           pip install -r requirements.txt
           pip install allure-pytest  # Ensure allure-pytest is installed
 
+      - name: Install Allure CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y allure
+
       - name: Run Tests with Allure
         run: |
           python main.py

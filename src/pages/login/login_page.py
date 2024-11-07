@@ -57,6 +57,10 @@ class LoginPage:
             EC.visibility_of_element_located(self.dashboard_header)
         ).text == "Logged In Successfully"
 
+    def get_dashboard_text(self):
+        return self.driver.find_element(*self.dashboard_header).text
+
+
     # dashboard url check
     def is_dashboard_url(self):
         return self.driver.current_url == URLs.DASHBOARD_PAGE_URL

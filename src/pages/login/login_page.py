@@ -55,7 +55,7 @@ class LoginPage:
     def is_dashboard_text_visible(self):
         return WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located(self.dashboard_header)
-        ).text == "Logged In Successfully"
+        ).text == "Logged In Successfullyt"
 
     # dashboard url check
     def is_dashboard_url(self):

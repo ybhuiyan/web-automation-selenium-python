@@ -14,9 +14,6 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - uses: actions/checkout@v4
-        if: success() || failure()
-
       - name: Run tests
         run: |
           python main.py
@@ -36,3 +33,4 @@ jobs:
           publish_dir: reports/allure-report
           publish_branch: gh-pages
           keep_files: false
+          force_orphan: true

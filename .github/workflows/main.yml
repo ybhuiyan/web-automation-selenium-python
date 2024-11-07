@@ -22,6 +22,10 @@ jobs:
         run: |
           python main.py
 
+      - name: Generate Allure Report
+        run: |
+          allure generate --clean ./reports/allure-results -o ./reports/allure-report
+
       - name: Upload Allure report as artifact
         uses: actions/upload-artifact@v4
         with:

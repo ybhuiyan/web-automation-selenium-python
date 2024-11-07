@@ -1,49 +1,45 @@
 import os
-import pytest
 import subprocess
+import pytest
 from src.utils.helper_function import update_default_browser, update_headless_mode
 
 def main(test_files):
-    # Clean up old results
-    if os.path.exists("./reports/allure-results"):
-        for file in os.listdir("./reports/allure-results"):
-            os.remove(os.path.join("./reports/allure-results", file))
+    # Pytest html report
+    # args = ["-v", "-s", "--html=reports/test_report.html", "--self-contained-html"]
+    # pytest.main(args + test_files)
 
-    # Define pytest arguments for generating Allure results
-    args = ["-v", "-s", "--alluredir=./reports/allure-results"]
+    # Allure report
+    args = ["-v", "-s", "--alluredir=./reports/allure-results"]  # Specify Allure results directory
     pytest.main(args + test_files)
 
-    # Generate Allure report after tests
     generate_allure_report()
+    serve_allure_report()
 
 def generate_allure_report():
-    print("Generating Allure report...")
-    try:
-        # Using subprocess to run the Allure generation command
-        result = subprocess.run(
-            ["allure", "generate", "./reports/allure-results", "-o", "./reports/allure-report", "--clean"],
-            check=True,
-            capture_output=True,
-            text=True
-        )
-        print("Allure report generated successfully at './reports/allure-report'.")
-    except subprocess.CalledProcessError as e:
-        print("Failed to generate Allure report.")
-        print(e.output)
+    # Simple report generation
+    os.system("allure generate --single-file ./reports/allure-results -o ./reports/allure-report --clean")
+    
+    
+def serve_allure_report():
+    subprocess.run(["allure", "serve", "./reports/allure-results"], shell=True)
+
 
 if __name__ == "__main__":
-    # Set browser and headless mode configuration
+    # Choose browser from "chrome" or "firefox"
     browser = "chrome"
+
+    # Define headless mode - True or False
     headless = True
 
-    # Apply configuration
+    # Update default browser setting
     update_default_browser(browser)
-    update_headless_mode(headless)
 
-    # List of test files to run
+    # Update headless mode setting
+    update_headless_mode(headless)
+ 
     test_files = [
         "src/tests/login/test_login.py",
     ]
 
-    # Run tests and generate the report
+    # Run tests
     main(test_files)

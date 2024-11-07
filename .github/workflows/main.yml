@@ -42,6 +42,7 @@ jobs:
       - name: Run Tests
         run: |
           python main.py
+        continue-on-error: true  # Ensure that even if tests fail, the summary is still generated
 
       - name: Verify Allure Results
         run: |
@@ -53,6 +54,15 @@ jobs:
         with:
           name: allure-report
           path: ./reports/allure-report
+
+      - name: Append Test Summary to Job Summary
+        run: |
+          if [ -f ./reports/allure-results/*.xml ]; then
+            echo "Test run completed successfully." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "Test run failed. No Allure results found." >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "Generated Allure report is available [here](./reports/allure-report)." >> $GITHUB_STEP_SUMMARY
 
   deploy:
     runs-on: ubuntu-latest

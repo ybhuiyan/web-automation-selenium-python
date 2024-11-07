@@ -1,0 +1,47 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "children" : [ {
+    "name" : "src.tests.login",
+    "children" : [ {
+      "name" : "test_login",
+      "children" : [ {
+        "name" : "test_valid_login[credentials0]",
+        "uid" : "8c0deefde083bb7c",
+        "parentUid" : "2d1efb350954f7fad2b5572e3594b75a",
+        "status" : "failed",
+        "time" : {
+          "start" : 1730973428771,
+          "stop" : 1730973430522,
+          "duration" : 1751
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 5,
+        "retriesStatusChange" : true,
+        "parameters" : [ "{'username': 'student', 'password': 'Password123'}" ]
+      }, {
+        "name" : "test_invalid_login[credentials0]",
+        "uid" : "851f04435b74fe0",
+        "parentUid" : "2d1efb350954f7fad2b5572e3594b75a",
+        "status" : "passed",
+        "time" : {
+          "start" : 1730973430548,
+          "stop" : 1730973431269,
+          "duration" : 721
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 5,
+        "retriesStatusChange" : false,
+        "parameters" : [ "{'username': 'invalid_user@example.com', 'password': 'invalid_password'}" ]
+      } ],
+      "uid" : "2d1efb350954f7fad2b5572e3594b75a"
+    } ],
+    "uid" : "22b3f3039e4e0ded8af045c5ff511dfb"
+  } ],
+  "name" : "suites"
+}

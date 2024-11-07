@@ -1,0 +1,30 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "AssertionError: assert False\n +  where False = <bound method LoginPage.is_dashboard_text_visible of <src.pages.login.login_page.LoginPage object at 0x7f2328dac5d0>>()\n +    where <bound method LoginPage.is_dashboard_text_visible of <src.pages.login.login_page.LoginPage object at 0x7f2328dac5d0>> = <src.pages.login.login_page.LoginPage object at 0x7f2328dac5d0>.is_dashboard_text_visible",
+      "children" : [ {
+        "name" : "test_valid_login[credentials0]",
+        "uid" : "8c0deefde083bb7c",
+        "parentUid" : "627bd1ca03c00fca08e16674544535a0",
+        "status" : "failed",
+        "time" : {
+          "start" : 1730973428771,
+          "stop" : 1730973430522,
+          "duration" : 1751
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 5,
+        "retriesStatusChange" : true,
+        "parameters" : [ "{'username': 'student', 'password': 'Password123'}" ]
+      } ],
+      "uid" : "627bd1ca03c00fca08e16674544535a0"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ],
+  "name" : "categories"
+}

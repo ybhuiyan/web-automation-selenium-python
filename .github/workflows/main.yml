@@ -23,7 +23,7 @@ jobs:
 
       - name: Run tests
         run: |
-          python main.py  # This will generate the allure report
+          python main.py
 
       - name: Upload Allure report as artifact
         uses: actions/upload-artifact@v4

@@ -59,12 +59,7 @@ jobs:
         
     - name: Append Test Summary to Job Summary
       run: |
-        if [ -f ./reports/allure-results/*.xml ]; then
-          echo "Test run completed successfully." >> $GITHUB_STEP_SUMMARY
-        else
-          echo "Test run failed. No Allure results found." >> $GITHUB_STEP_SUMMARY
-        fi
-        echo "Generated Allure report is available [here](./reports/allure-report)." >> $GITHUB_STEP_SUMMARY
+        echo "Adding some Markdown content" >> $GITHUB_STEP_SUMMARY
         
   deploy:
     runs-on: ubuntu-latest

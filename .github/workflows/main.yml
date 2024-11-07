@@ -29,7 +29,7 @@ jobs:
 
       - name: Deploy Allure report to GitHub Pages
         if: always()
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: reports/allure-report

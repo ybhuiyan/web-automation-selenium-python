@@ -1,9 +1,14 @@
 import os
 import pytest
-from src.utils.helper_function import update_default_browser, update_headless_mode
 import subprocess
+from src.utils.helper_function import update_default_browser, update_headless_mode
 
 def main(test_files):
+    # Clean up old results
+    if os.path.exists("./reports/allure-results"):
+        for file in os.listdir("./reports/allure-results"):
+            os.remove(os.path.join("./reports/allure-results", file))
+
     # Define pytest arguments for generating Allure results
     args = ["-v", "-s", "--alluredir=./reports/allure-results"]
     pytest.main(args + test_files)

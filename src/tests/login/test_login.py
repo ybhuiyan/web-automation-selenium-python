@@ -29,4 +29,4 @@ def test_invalid_login(driver_manager, credentials):
     password = credentials['password']
     login_page = LoginPage(driver_manager)
     login_page.login(username, password)
-    assert "csdsfsd"
+    assert login_page.is_error_message_displayed()

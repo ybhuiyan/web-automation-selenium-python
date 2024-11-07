@@ -25,11 +25,11 @@ jobs:
 
       - name: Run tests
         run: |
-          python main.py  # Generates the results in reports/allure-results
+          python main.py  # Generates the report in reports/allure-report
 
-      - name: Generate Allure Report as Single File
+      - name: Remove unnecessary files
         run: |
-          allure generate --single-file ./reports/allure-results -o ./reports/allure-report --clean
+          find reports/allure-report -type f ! -name 'index.html' -delete
 
       - name: Upload Allure report as artifact
         uses: actions/upload-artifact@v4
